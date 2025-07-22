@@ -1,0 +1,266 @@
+/* 基础样式重置与字体设置 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 容器布局 */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+  width: 220px;
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+  color: white;
+  padding: 25px 15px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.sidebar li {
+  margin: 12px 0;
+  transition: transform 0.2s;
+}
+
+.sidebar li:hover {
+  transform: translateX(5px);
+}
+
+.sidebar a {
+  color: #ecf0f1;
+  text-decoration: none;
+  display: block;
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+/* 主内容区样式 */
+.main {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* 分节标题样式 */
+.section-header {
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+}
+
+.section-header hr {
+  border: none;
+  height: 3px;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  margin: 10px 0 0 0;
+  width: 100px;
+  transition: width 0.3s;
+}
+
+.section-header:hover hr {
+  width: 150px;
+}
+
+/* 子部分标题样式 */
+.sub-section {
+  margin-top: 35px;
+}
+
+.sub-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #16a085;
+  padding-left: 12px;
+  border-left: 4px solid #16a085;
+}
+
+/* 卡片网格布局 */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* 卡片样式 */
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  height: 120px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.4s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.card:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.card a {
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #3498db;
+  transition: color 0.3s;
+}
+
+.card a:hover {
+  color: #2980b9;
+}
+
+.card p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #7f8c8d;
+  line-height: 1.4;
+}
+
+/* 返回顶部按钮样式 */
+#back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 22px;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#back-to-top:hover {
+  background: linear-gradient(135deg, #2980b9, #2c3e50);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(52, 152, 219, 0.6);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 15px;
+  }
+  
+  .main {
+    padding: 20px;
+  }
+  
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* 优化滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bdc3c7;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #95a5a6;
+}
+
+/* 分节区域间隔 */
+section {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+section:last-child {
+  border-bottom: none;
+}
